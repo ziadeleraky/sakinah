@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Egyptian Quran Radio</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>&#1573;&#1584;&#1575;&#1593;&#1577; &#1575;&#1604;&#1602;&#1585;&#1570;&#1606; &#1575;&#1604;&#1603;&#1585;&#1610;&#1605;</h1>
+      <p class="subtitle">&#1575;&#1604;&#1602;&#1575;&#1607;&#1585;&#1577; 98.2 FM</p>
+    </div>
+
+    <button id="playPauseBtn" class="play-btn" title="&#1578;&#1588;&#1594;&#1610;&#1604; / &#1573;&#1610;&#1602;&#1575;&#1601;">
+      <svg id="playIcon" class="icon" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M8 5v14l11-7z"/>
+      </svg>
+      <svg id="pauseIcon" class="icon hidden" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
+      </svg>
+    </button>
+
+    <div id="status" class="status">&#1605;&#1578;&#1608;&#1602;&#1601;</div>
+
+    <div class="volume-control">
+      <svg class="volume-icon" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M18.5 12c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM5 9v6h4l5 5V4L9 9H5z"/>
+      </svg>
+      <input type="range" id="volumeSlider" class="volume-slider" min="0" max="100" value="80">
+      <span id="volumeValue" class="volume-value">80%</span>
+    </div>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

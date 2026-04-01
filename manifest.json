@@ -1,0 +1,24 @@
+{
+  "manifest_version": 3,
+  "name": "Egyptian Quran Radio",
+  "version": "1.0.0",
+  "description": "Listen to إذاعة القرآن الكريم من القاهرة (98.2 FM) live",
+  "permissions": ["offscreen", "storage"],
+  "host_permissions": ["https://stream.radiojar.com/*"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  }
+}
