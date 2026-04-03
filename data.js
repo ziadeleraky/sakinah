@@ -2,6 +2,8 @@ const MINSHAWI_SERVER = 'https://server10.mp3quran.net/minsh/Almusshaf-Al-Mojaww
 const ABDULBASET_SERVER = 'https://server7.mp3quran.net/basit/Almusshaf-Al-Mojawwad/';
 const MINSHAWI_LIVE = 'https://archive.org/download/rabieaaa2018_yahoo_0012143513245/';
 const ABDULBASET_LIVE = 'https://archive.org/download/abdulbasitabdulsamad_202101/';
+const ABDULBASET_WARSH = 'https://server7.mp3quran.net/basit/Rewayat-Warsh-A-n-Nafi/';
+const MINSHAWI_ECHO = 'https://server10.mp3quran.net/minsh/minh-old-with-echo/';
 
 const RECORDINGS = [
   {
@@ -171,5 +173,65 @@ const RECORDINGS = [
     title: 'سورة الفجر - تسجيل نادر',
     reciter: 'الشيخ عبد الباسط عبد الصمد',
     url: `${ABDULBASET_LIVE}089.mp3`
+  },
+  {
+    id: 'abdulbaset-warsh-001',
+    title: 'سورة يس - عبد الباسط برواية ورش',
+    reciter: 'الشيخ عبد الباسط عبد الصمد',
+    url: `${ABDULBASET_WARSH}036.mp3`
+  },
+  {
+    id: 'abdulbaset-warsh-002',
+    title: 'سورة الرحمن - عبد الباسط برواية ورش',
+    reciter: 'الشيخ عبد الباسط عبد الصمد',
+    url: `${ABDULBASET_WARSH}055.mp3`
+  },
+  {
+    id: 'abdulbaset-warsh-003',
+    title: 'سورة الملك - عبد الباسط برواية ورش',
+    reciter: 'الشيخ عبد الباسط عبد الصمد',
+    url: `${ABDULBASET_WARSH}067.mp3`
+  },
+  {
+    id: 'abdulbaset-warsh-004',
+    title: 'سورة الكهف - عبد الباسط برواية ورش',
+    reciter: 'الشيخ عبد الباسط عبد الصمد',
+    url: `${ABDULBASET_WARSH}018.mp3`
+  },
+  {
+    id: 'abdulbaset-warsh-005',
+    title: 'سورة المزمل - عبد الباسط برواية ورش',
+    reciter: 'الشيخ عبد الباسط عبد الصمد',
+    url: `${ABDULBASET_WARSH}073.mp3`
+  },
+  {
+    id: 'minshawi-echo-001',
+    title: 'سورة يس - المنشاوي تسجيل قديم',
+    reciter: 'الشيخ محمد صديق المنشاوي',
+    url: `${MINSHAWI_ECHO}036.mp3`
+  },
+  {
+    id: 'minshawi-echo-002',
+    title: 'سورة الرحمن - المنشاوي تسجيل قديم',
+    reciter: 'الشيخ محمد صديق المنشاوي',
+    url: `${MINSHAWI_ECHO}055.mp3`
+  },
+  {
+    id: 'minshawi-echo-003',
+    title: 'سورة الملك - المنشاوي تسجيل قديم',
+    reciter: 'الشيخ محمد صديق المنشاوي',
+    url: `${MINSHAWI_ECHO}067.mp3`
+  },
+  {
+    id: 'minshawi-echo-004',
+    title: 'سورة الكهف - المنشاوي تسجيل قديم',
+    reciter: 'الشيخ محمد صديق المنشاوي',
+    url: `${MINSHAWI_ECHO}018.mp3`
+  },
+  {
+    id: 'minshawi-echo-005',
+    title: 'سورة المزمل - المنشاوي تسجيل قديم',
+    reciter: 'الشيخ محمد صديق المنشاوي',
+    url: `${MINSHAWI_ECHO}073.mp3`
   }
 ];
