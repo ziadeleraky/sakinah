@@ -1,7 +1,4 @@
 const OFFSCREEN_URL = chrome.runtime.getURL('offscreen.html');
-const STREAM_URL = 'https://stream.radiojar.com/8s5u5tpdtwzuv';
-
-let offscreenCreated = false;
 
 chrome.runtime.onInstalled.addListener(async () => {
   const saved = await chrome.storage.local.get(['volume']);
@@ -11,18 +8,12 @@ chrome.runtime.onInstalled.addListener(async () => {
 });
 
 async function ensureOffscreen() {
-  if (offscreenCreated) return;
-  const existing = await chrome.offscreen.hasDocument();
-  if (existing) {
-    offscreenCreated = true;
-    return;
-  }
+  if (await chrome.offscreen.hasDocument()) return;
   await chrome.offscreen.createDocument({
     url: OFFSCREEN_URL,
     reasons: ['AUDIO_PLAYBACK'],
-    justification: 'Play Egyptian Quran Radio'
+    justification: 'Play Sakinah - Quran recitations'
   });
-  offscreenCreated = true;
 }
 
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
@@ -36,16 +27,20 @@ async function handleMessage(message) {
   switch (message.type) {
     case 'PLAY':
       await ensureOffscreen();
-      return sendMessageToOffscreen({ type: 'PLAY', url: STREAM_URL });
+      return sendMessageToOffscreen({
+        type: 'PLAY',
+        url: message.url,
+        metadata: message.metadata || null
+      });
 
     case 'PAUSE':
-      if (offscreenCreated) {
+      if (await chrome.offscreen.hasDocument()) {
         return sendMessageToOffscreen({ type: 'PAUSE' });
       }
       return { success: true };
 
     case 'SET_VOLUME':
-      if (offscreenCreated) {
+      if (await chrome.offscreen.hasDocument()) {
         sendMessageToOffscreen({ type: 'SET_VOLUME', volume: message.volume });
       }
       await chrome.storage.local.set({ volume: message.volume });
@@ -53,13 +48,6 @@ async function handleMessage(message) {
 
     case 'STATE_UPDATE':
       await chrome.storage.local.set({ state: message.state });
-      return { success: true };
-
-    case 'CLOSE_OFFSCREEN':
-      if (offscreenCreated) {
-        await chrome.offscreen.closeDocument();
-        offscreenCreated = false;
-      }
       return { success: true };
 
     default:

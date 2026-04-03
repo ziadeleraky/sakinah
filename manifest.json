@@ -1,10 +1,10 @@
 {
   "manifest_version": 3,
-  "name": "Egyptian Quran Radio",
+  "name": "Sakinah",
   "version": "1.0.0",
-  "description": "Listen to إذاعة القرآن الكريم من القاهرة (98.2 FM) live",
+  "description": "Find sakinah through Quran recitations by Minshawi and Abdulbaset",
   "permissions": ["offscreen", "storage"],
-  "host_permissions": ["https://stream.radiojar.com/*"],
+  "host_permissions": ["https://server10.mp3quran.net/*", "https://server7.mp3quran.net/*", "https://archive.org/*"],
   "background": {
     "service_worker": "background.js"
   },

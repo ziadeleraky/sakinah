@@ -1,20 +1,21 @@
 const audio = new Audio();
 audio.preload = 'none';
 
-let currentState = 'paused';
-
 function setState(state) {
-  currentState = state;
   chrome.runtime.sendMessage({ target: 'background', type: 'STATE_UPDATE', state });
 }
 
-if ('mediaSession' in navigator) {
-  navigator.mediaSession.metadata = new MediaMetadata({
-    title: 'إذاعة القرآن الكريم',
-    artist: 'القاهرة 98.2 FM',
-    album: 'Egyptian Quran Radio'
-  });
+function updateMediaSession(metadata) {
+  if ('mediaSession' in navigator) {
+    navigator.mediaSession.metadata = new MediaMetadata({
+      title: metadata.title || 'Sakinah',
+      artist: metadata.artist || 'Quran Recitation',
+      album: metadata.album || 'Sakinah'
+    });
+  }
+}
 
+if ('mediaSession' in navigator) {
   navigator.mediaSession.setActionHandler('play', () => {
     audio.play();
   });
@@ -34,7 +35,12 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
 
   switch (message.type) {
     case 'PLAY':
-      audio.src = message.url;
+      if (audio.src !== message.url) {
+        audio.src = message.url;
+        if (message.metadata) {
+          updateMediaSession(message.metadata);
+        }
+      }
       audio.play().catch(() => setState('error'));
       sendResponse({ success: true });
       break;
@@ -52,8 +58,6 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     default:
       sendResponse({ success: false });
   }
-
-  return true;
 });
 
 chrome.storage.local.get(['volume'], (result) => {

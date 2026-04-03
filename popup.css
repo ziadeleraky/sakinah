@@ -5,7 +5,7 @@
 }
 
 body {
-  width: 300px;
+  width: 340px;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   background: #0f1923;
   color: #e8e8e8;
@@ -21,21 +21,49 @@ body {
 }
 
 .header h1 {
-  font-size: 20px;
+  font-size: 18px;
   color: #4caf50;
   font-weight: 600;
   margin-bottom: 4px;
 }
 
 .subtitle {
-  font-size: 13px;
+  font-size: 12px;
   color: #888;
   direction: ltr;
 }
 
+.current-track {
+  font-size: 14px;
+  color: #e8e8e8;
+  margin-bottom: 6px;
+  padding: 10px 14px;
+  background: rgba(76, 175, 80, 0.1);
+  border-radius: 8px;
+  min-height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.current-reciter {
+  font-size: 12px;
+  color: #888;
+  margin-bottom: 16px;
+  min-height: 18px;
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 12px;
+}
+
 .play-btn {
-  width: 72px;
-  height: 72px;
+  width: 64px;
+  height: 64px;
   border-radius: 50%;
   border: 2px solid #4caf50;
   background: transparent;
@@ -43,7 +71,6 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 0 auto 16px;
   transition: all 0.2s ease;
 }
 
@@ -56,9 +83,42 @@ body {
   transform: scale(0.95);
 }
 
+.shuffle-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 2px solid #888;
+  background: transparent;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.shuffle-btn:hover {
+  border-color: #4caf50;
+  background: rgba(76, 175, 80, 0.1);
+  transform: scale(1.05);
+}
+
+.shuffle-btn:active {
+  transform: scale(0.95);
+}
+
+.shuffle-btn .icon {
+  width: 22px;
+  height: 22px;
+  fill: #888;
+}
+
+.shuffle-btn:hover .icon {
+  fill: #4caf50;
+}
+
 .icon {
-  width: 36px;
-  height: 36px;
+  width: 32px;
+  height: 32px;
   fill: #4caf50;
 }
 
@@ -67,10 +127,10 @@ body {
 }
 
 .status {
-  font-size: 14px;
+  font-size: 13px;
   color: #aaa;
-  margin-bottom: 24px;
-  min-height: 20px;
+  margin-bottom: 16px;
+  min-height: 18px;
 }
 
 .status.playing {
@@ -131,7 +191,7 @@ body {
 }
 
 .volume-value {
-  font-size: 13px;
+  font-size: 12px;
   color: #888;
   min-width: 36px;
   text-align: left;

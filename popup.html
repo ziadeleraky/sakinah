@@ -3,26 +3,37 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Egyptian Quran Radio</title>
+  <title>Sakinah</title>
   <link rel="stylesheet" href="popup.css">
 </head>
 <body>
   <div class="container">
     <div class="header">
-      <h1>&#1573;&#1584;&#1575;&#1593;&#1577; &#1575;&#1604;&#1602;&#1585;&#1570;&#1606; &#1575;&#1604;&#1603;&#1585;&#1610;&#1605;</h1>
-      <p class="subtitle">&#1575;&#1604;&#1602;&#1575;&#1607;&#1585;&#1577; 98.2 FM</p>
+      <h1>سكينه</h1>
+      <p class="subtitle">المنشاوي وعبد الباسط</p>
     </div>
 
-    <button id="playPauseBtn" class="play-btn" title="&#1578;&#1588;&#1594;&#1610;&#1604; / &#1573;&#1610;&#1602;&#1575;&#1601;">
-      <svg id="playIcon" class="icon" viewBox="0 0 24 24" fill="currentColor">
-        <path d="M8 5v14l11-7z"/>
-      </svg>
-      <svg id="pauseIcon" class="icon hidden" viewBox="0 0 24 24" fill="currentColor">
-        <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
-      </svg>
-    </button>
+    <div id="currentTrack" class="current-track">اضغط للتشغيل</div>
+    <div id="currentReciter" class="current-reciter"></div>
 
-    <div id="status" class="status">&#1605;&#1578;&#1608;&#1602;&#1601;</div>
+    <div class="controls">
+      <button id="playPauseBtn" class="play-btn" title="تشغيل / إيقاف">
+        <svg id="playIcon" class="icon" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M8 5v14l11-7z"/>
+        </svg>
+        <svg id="pauseIcon" class="icon hidden" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
+        </svg>
+      </button>
+
+      <button id="shuffleBtn" class="shuffle-btn" title="تشغيل عشوائي">
+        <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M10.59 9.17L5.41 4 4 5.41l5.17 5.17 1.42-1.41zM14.5 4l2.04 2.04L4 18.59 5.41 20 17.96 7.46 20 9.5V4h-5.5zm.33 9.41l-1.41 1.41 3.13 3.13L14.5 20H20v-5.5l-2.04 2.04-3.13-3.13z"/>
+        </svg>
+      </button>
+    </div>
+
+    <div id="status" class="status">متوقف</div>
 
     <div class="volume-control">
       <svg class="volume-icon" viewBox="0 0 24 24" fill="currentColor">
@@ -33,6 +44,7 @@
     </div>
   </div>
 
+  <script src="data.js"></script>
   <script src="popup.js"></script>
 </body>
 </html>
