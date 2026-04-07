@@ -29,6 +29,9 @@ audio.addEventListener('playing', () => setState('playing'));
 audio.addEventListener('pause', () => setState('paused'));
 audio.addEventListener('error', () => setState('error'));
 audio.addEventListener('waiting', () => setState('loading'));
+audio.addEventListener('ended', () => {
+  chrome.runtime.sendMessage({ target: 'background', type: 'PLAY_NEXT' });
+});
 
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
   if (message.target !== 'offscreen') return;

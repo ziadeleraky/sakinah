@@ -13,6 +13,7 @@ A Chrome extension that shuffles between curated Quran recordings from two of th
 - **Media session support** - Control playback from your OS media controls
 - **Volume control** - Adjustable volume slider
 - **Auto-skip on error** - Automatically moves to the next recording if one fails to load
+- **Auto-play next track** - Automatically plays the next random recording when audio finishes (works even when popup is closed)
 - **Offline-friendly** - No accounts, no ads, no tracking
 
 ## Recitation Styles
@@ -51,6 +52,8 @@ A Chrome extension that shuffles between curated Quran recordings from two of th
 
 The extension shuffles between all 38 recordings, never repeating the same track twice in a row.
 
+> **Tip:** Audio continues playing and auto-advances to the next track even after you close the popup. The extension runs in the background via Chrome's offscreen document.
+
 ## File Structure
 
 ```
@@ -77,7 +80,7 @@ The extension uses Chrome's **Manifest V3** architecture:
 - **Service Worker** (`background.js`) - Routes messages between popup and offscreen document
 - **Offscreen Document** (`offscreen.js/html`) - Handles actual audio playback using the HTML5 Audio API
 
-This separation allows audio to continue playing even when the popup is closed, while keeping the extension lightweight.
+This separation allows audio to continue playing even when the popup is closed, while keeping the extension lightweight. The offscreen document handles autoplay directly through the service worker, ensuring seamless playback continuation.
 
 ### Message Flow
 
@@ -85,6 +88,8 @@ This separation allows audio to continue playing even when the popup is closed, 
 Popup → Background → Offscreen → Audio Playback
   ↑          ↑
   └──────────┘ (state updates via chrome.storage)
+
+Audio End → Offscreen → Background → Auto-play Next Track
 ```
 
 ## Audio Sources
